@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkOrdersTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateWorkOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('work_orders', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->string('name');
-            $table->string('type');
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('workorder_id');
+            $table->string('type');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateWorkOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('work_orders');
+        Schema::dropIfExists('tasks');
     }
 }
