@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\WorkOrder;
 use Illuminate\Http\Request;
 
-class WorkOrderController extends Controller
+class WorkOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class WorkOrderController extends Controller
      */
     public function index()
     {
-        //
+        $workorders = Workorder::latest()->get();
+        return view("workorders.index", compact('workorders'));
     }
 
     /**
@@ -46,7 +47,7 @@ class WorkOrderController extends Controller
      */
     public function show(WorkOrder $workOrder)
     {
-        //
+        return view ('workorders.show', compact ('workOrder'));
     }
 
     /**
