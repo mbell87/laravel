@@ -13,18 +13,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\WorkOrder::class, function (Faker $faker) {
+$factory->define(App\WOType::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'type' => $faker->name,
-        'user_id' => function () {
-            return factory('App\User')->create()->id;
-        },
-        'type' => function () {
-            return factory('App\WOType')->create()->id;
-        }
+        'name' => $faker->jobTitle,
 
-        ,
+
     ];
 });
 

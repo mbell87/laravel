@@ -18,6 +18,12 @@ class WorkOrder extends Model
         return $this->hasMany(Task::class, "workorder_id");
     }
 
+    public function employee()
+    {
+        return $this->belongsTo(User::class, "user_id");
+    }
+
+
     public function addTask($reply)
     {
         $this->tasks()->create($reply);

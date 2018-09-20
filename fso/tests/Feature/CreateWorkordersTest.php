@@ -17,9 +17,9 @@ class CreateWorkordersTest extends TestCase
     /** @test */
     public function an_authenticated_user_can_create_workorder()
     {
-        $user = factory('App\User')->create();
+        $user = create('App\User');
         $this->be($user);
-        $wo = factory('App\WorkOrder')->create();
+        $wo = create('App\WorkOrder');
 
         $this->post("/workorders", $wo->toArray());
         $response = $this->get("/workorders");
@@ -30,11 +30,21 @@ class CreateWorkordersTest extends TestCase
     /** @test */
     public function an_unauthenticated_user_cannot_create_workorder()
     {
+        $this->withoutExceptionHandling();
         $this->expectException("Illuminate\Auth\AuthenticationException");
-        $wo = factory('App\WorkOrder')->create();
+        $wo = create('App\WorkOrder');
 
         $this->post("/workorders", $wo->toArray());
 
     }
+
+    /** @test */
+    public function guests_cannot_see_create_wo()
+    {
+        $this->get("/workorders/create")
+            ->assertRedirect('/login');
+
+    }
+
 
 }

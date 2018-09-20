@@ -21,10 +21,9 @@ class TaskOpeningTest extends TestCase
     /** @test */
     public function authenticated_user_can_open_task_on_workorder()
     {
-        $user = factory('App\User')->create();
-        $this->be($user);
-        $wo = factory('App\WorkOrder')->create();
-        $task = factory('App\Task')->make();
+        $this->signIn();
+        $wo = create('App\WorkOrder');
+        $task = make('App\Task');
 
         $this->post($wo->path()."/tasks", $task->toArray());
         $response = $this->get($wo->path(), $task->toArray());

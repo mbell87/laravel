@@ -19,15 +19,16 @@
 
                 @if (auth()->check())
                 <div class="card-body">
+                    <h4> Add task: </h4>
                     <form method="POST" action="{{ $workOrder->path() . "/tasks"}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Type: </label>
-                            <input type="text" name="type" />
+                            <input class="form-control" type="text" name="type" />
                         </div>
                         <div class="form-group">
                             <label>Description: </label>
-                            <input type="text" name="description" />
+                            <input class="form-control" type="text" name="description" />
                         </div>
                         <button type="submit" class="btn btn-default"> ADD </button>
                     </form>

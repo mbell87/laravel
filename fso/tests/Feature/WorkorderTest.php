@@ -16,7 +16,7 @@ class WorkorderTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->wo = factory("App\WorkOrder")->create();
+        $this->wo = create("App\WorkOrder");
     }
 
     /** @test */
@@ -43,7 +43,7 @@ class WorkorderTest extends TestCase
     /** @test */
     public function a_user_can_see_a_workorder_tasks()
     {
-        $task = factory("App\Task")->create(["workorder_id" =>$this->wo->id ]);
+        $task = create("App\Task", ["workorder_id" =>$this->wo->id ]);
         $response = $this->get('/workorders/'.$this->wo->id);
 
         $response->assertSee($task->type);
