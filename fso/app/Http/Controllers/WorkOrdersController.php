@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class WorkOrdersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('store');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +41,15 @@ class WorkOrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $wo = Workorder::create(
+            [
+                "name" => request('name'),
+                "type" => request('type'),
+                "user_id" => auth()->id(),
+            ]
+        );
+
+        return redirect($wo->path());
     }
 
     /**
@@ -47,7 +60,7 @@ class WorkOrdersController extends Controller
      */
     public function show(WorkOrder $workOrder)
     {
-        return view ('workorders.show', compact ('workOrder'));
+        return view('workorders.show', compact('workOrder'));
     }
 
     /**

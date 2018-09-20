@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\task;
+use App\Task;
+use App\WorkOrder;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -33,9 +41,19 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkOrder $workOrder)
     {
-        //
+        $workOrder->addTask(
+
+            [
+                'type' => request('type'),
+                'description' => request('description'),
+                'user_id' => auth()->id(),
+
+            ]
+        );
+
+        return back();
     }
 
     /**

@@ -19,4 +19,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/workorders', "WorkOrdersController@index");
+Route::post('/workorders', "WorkOrdersController@store");
 Route::get('/workorders/{workOrder}', "WorkOrdersController@show");
+Route::post('/workorders/{workOrder}/tasks', "TasksController@store");
