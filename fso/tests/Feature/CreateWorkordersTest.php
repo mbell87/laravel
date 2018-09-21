@@ -19,7 +19,7 @@ class CreateWorkordersTest extends TestCase
     {
         $user = create('App\User');
         $this->be($user);
-        $wo = create('App\WorkOrder');
+        $wo = create('App\Workorder');
 
         $this->post("/workorders", $wo->toArray());
         $response = $this->get("/workorders");
@@ -32,7 +32,7 @@ class CreateWorkordersTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $this->expectException("Illuminate\Auth\AuthenticationException");
-        $wo = create('App\WorkOrder');
+        $wo = create('App\Workorder');
 
         $this->post("/workorders", $wo->toArray());
 

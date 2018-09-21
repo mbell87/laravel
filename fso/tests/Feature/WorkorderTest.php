@@ -16,7 +16,7 @@ class WorkorderTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->wo = create("App\WorkOrder");
+        $this->wo = create("App\Workorder");
     }
 
     /** @test */
@@ -46,7 +46,7 @@ class WorkorderTest extends TestCase
         $task = create("App\Task", ["workorder_id" =>$this->wo->id ]);
         $response = $this->get('/workorders/'.$this->wo->id);
 
-        $response->assertSee($task->type);
+        $response->assertSee($task->description);
 
     }
 

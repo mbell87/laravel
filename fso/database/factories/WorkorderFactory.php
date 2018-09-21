@@ -13,18 +13,32 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\WorkOrder::class, function (Faker $faker) {
+
+$factory->define(App\Workorder::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'type' => $faker->name,
-        'user_id' => function () {
+        'user_id' => function()
+        {
             return factory('App\User')->create()->id;
         },
-        'type' => function () {
+        'wo_type_id' => function()
+        {
             return factory('App\WOType')->create()->id;
-        }
+        },
+        'wwms' => $faker->randomNumber,
+        'mdf_id' => function()
+        {
+            return factory('App\MDF')->create()->id;
+        },
+        'address' => $faker->address,
+        'client' => $faker->name,
+        'status_id'  => function()
+        {
+            return factory('App\Status')->create()->id;
+        },
+        'mpc_id' => $faker->randomNumber,
 
-        ,
+        
+        
     ];
 });
 

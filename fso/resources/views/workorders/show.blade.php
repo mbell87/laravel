@@ -5,22 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Workorder {{ $workOrder->name}}</div>
+                <div class="card-header">Workorder {{ $workorder->name}}</div>
 
                 <div class="card-body">
                     <article>
-                        <h4> {{ $workOrder->name }} </h4>
-                        <div class="body"> {{ $workOrder->type}}
+                        <h4> {{ $workorder->name }} </h4>
+                        <div class="body"> {{ $workorder->type}}
                     </article>
                 </div>
-                @foreach ($workOrder->tasks as $task)
+                @foreach ($workorder->tasks as $task)
                 @include('workorders.task')
                 @endforeach
 
                 @if (auth()->check())
                 <div class="card-body">
                     <h4> Add task: </h4>
-                    <form method="POST" action="{{ $workOrder->path() . "/tasks"}}">
+                    <form method="POST" action="{{ $workorder->path() . "/tasks"}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Type: </label>

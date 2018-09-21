@@ -10,8 +10,8 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Name: </label>
-                                <input class="form-control" type="text" name="name"/>
+                                <label>Client: </label>
+                                <input class="form-control" type="text" name="client"/>
                             </div>
                             <div class="form-group">
                                 <label>Type: </label>

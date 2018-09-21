@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\WorkOrder;
+use App\Workorder;
 use Illuminate\Http\Request;
 
 class WorkOrdersController extends Controller
@@ -55,21 +55,21 @@ class WorkOrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\WorkOrder  $workOrder
+     * @param  \App\Workorder  $workorder
      * @return \Illuminate\Http\Response
      */
-    public function show(WorkOrder $workOrder)
+    public function show(Workorder $workorder)
     {
-        return view('workorders.show', compact('workOrder'));
+        return view('workorders.show', compact('workorder'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\WorkOrder  $workOrder
+     * @param  \App\Workorder  $workorder
      * @return \Illuminate\Http\Response
      */
-    public function edit(WorkOrder $workOrder)
+    public function edit(Workorder $workorder)
     {
         //
     }
@@ -78,10 +78,10 @@ class WorkOrdersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\WorkOrder  $workOrder
+     * @param  \App\Workorder  $workorder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WorkOrder $workOrder)
+    public function update(Request $request, Workorder $workorder)
     {
         //
     }
@@ -89,10 +89,10 @@ class WorkOrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\WorkOrder  $workOrder
+     * @param  \App\Workorder  $workorder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WorkOrder $workOrder)
+    public function destroy(Workorder $workorder)
     {
         //
     }

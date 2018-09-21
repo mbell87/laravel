@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
-use App\WorkOrder;
+use App\Workorder;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -41,9 +41,9 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WorkOrder $workOrder)
+    public function store(Workorder $workorder)
     {
-        $workOrder->addTask(
+        $workorder->addTask(
 
             [
                 'type' => request('type'),

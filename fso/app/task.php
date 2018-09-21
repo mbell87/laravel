@@ -13,4 +13,10 @@ class Task extends Model
         return $this->belongsTo(User::class, "user_id");
     }
 
+    public function type()
+    {
+        return $this->belongsTo(TaskType::class, "type_id");
+    }
+
+
 }

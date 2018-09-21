@@ -22,12 +22,12 @@ class TaskOpeningTest extends TestCase
     public function authenticated_user_can_open_task_on_workorder()
     {
         $this->signIn();
-        $wo = create('App\WorkOrder');
+        $wo = create('App\Workorder');
         $task = make('App\Task');
 
         $this->post($wo->path()."/tasks", $task->toArray());
-        $response = $this->get($wo->path(), $task->toArray());
-        $response->assertSee($task->type);
+        $response = $this->get('/workorders/'.$wo->id);
+        $response->assertSee($task->description);
 
 
 

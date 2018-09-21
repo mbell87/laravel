@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\WOType::class, function (Faker $faker) {
+$factory->define(App\MDF::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
     ];

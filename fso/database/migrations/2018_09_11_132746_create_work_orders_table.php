@@ -13,11 +13,16 @@ class CreateWorkOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('work_orders', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->string('name');
-            $table->string('type');
+        Schema::create('workorders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->string('wo_type_id');
+            $table->unsignedInteger('wwms');
+            $table->integer('mdf_id');
+            $table->text('address');
+            $table->text('client');
+            $table->integer('status_id');
+            $table->integer('mpc_id');
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateWorkOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('work_orders');
+        Schema::dropIfExists('workorders');
     }
 }

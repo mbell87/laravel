@@ -24,7 +24,7 @@ class WorkorderTest extends TestCase
     public function a_wo_has_a_user()
     {
 
-        $task = factory('App\WorkOrder')->create();
+        $task = factory('App\Workorder')->create();
 
         $this->assertInstanceOf('App\User', $task->employee);
 
@@ -33,11 +33,21 @@ class WorkorderTest extends TestCase
     public function a_wo_has_a_type()
     {
 
-        $task = factory('App\WorkOrder')->create();
+        $task = factory('App\Workorder')->create();
 
         $this->assertInstanceOf('App\WOType', $task->type);
 
     }
+
+    public function a_wo_has_a_status()
+    {
+
+        $task = factory('App\Workorder')->create();
+
+        $this->assertInstanceOf('App\Status', $task->status);
+
+    }
+
 
 
 

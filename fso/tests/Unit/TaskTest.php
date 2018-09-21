@@ -21,8 +21,8 @@ class TaskTest extends TestCase
     /** @test */
     public function a_task_has_a_user()
     {
-
-        $task = factory('App\Task')->create();
+        
+        $task =  factory("App\Task")->create();
 
         $this->assertInstanceOf('App\User', $task->employee);
 

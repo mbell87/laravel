@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WorkOrder extends Model
+class Workorder extends Model
 {
     protected $guarded = [];
 
@@ -23,9 +23,21 @@ class WorkOrder extends Model
         return $this->belongsTo(User::class, "user_id");
     }
 
-
-    public function addTask($reply)
+    public function type()
     {
-        $this->tasks()->create($reply);
+        return $this->belongsTo(WOType::class, "wo_type_id");
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, "status_id");
+    }
+
+
+
+
+    public function addTask($task)
+    {
+        $this->tasks()->create($task);
     }
 }
