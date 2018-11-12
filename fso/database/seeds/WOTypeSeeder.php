@@ -15,18 +15,21 @@ class WOTypeSeeder extends Seeder
         
         WOType::create(
             [
-                "name" => "FR(n) - Mjerenje linije"
+                "name" => "FR(n) - Mjerenje linije",
+                "job_group" => "B1-13"
             ]
         );
 
         WOType::create(
             [
-                "name" => "FR(n) - Podzemni kabel"
+                "name" => "FR(n) - Podzemni kabel",
+                "job_group" => "B1-13"
             ]
         );
         WOType::create(
             [
-                "name" => "FR(n) - Zračni kabel"
+                "name" => "FR(n) - Zračni kabel",
+                "job_group" => "B1-13"
             ]
         );
     }

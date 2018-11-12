@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWOTypesTable extends Migration
+class CreateWorkorderInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateWOTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wo_types', function (Blueprint $table) {
+        Schema::create('workorder_invoice', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
-            $table->text('job_group');
+            $table->integer('workorder_id');
+            $table->integer('invoice_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateWOTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wo_types');
+        Schema::dropIfExists('workorder_invoice');
     }
 }

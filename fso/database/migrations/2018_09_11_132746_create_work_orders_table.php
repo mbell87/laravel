@@ -21,9 +21,17 @@ class CreateWorkOrdersTable extends Migration
             $table->integer('mdf_id');
             $table->text('address');
             $table->text('client');
+            $table->string('description');
             $table->integer('status_id');
-            $table->integer('mpc_id');
+            $table->integer('on_time');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->integer('call_type');
+            $table->integer('invoice_id');
             $table->timestamps();
+            $table->integer('created_by');
+            $table->integer('updated_by');
+
         });
     }
 

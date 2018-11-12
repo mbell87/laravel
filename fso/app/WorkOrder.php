@@ -8,6 +8,12 @@ class Workorder extends Model
 {
     protected $guarded = [];
 
+    public function invoices()
+    {
+        return $this->belongsToMany(Invoice::class);
+    }
+
+
     public function path()
     {
         return "/workorders/" .$this->id;

@@ -13,11 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MDFSeeder::class,
-            TaskTypeSeeder::class,
-            TaskTypeSeeder1::class,
-            WOTypeSeeder::class,
             StatusSeeder::class,
+            TaskTypeSeeder::class,
             UserSeeder::class,
+            WOTypeSeeder::class,
         ]);
         }
 }

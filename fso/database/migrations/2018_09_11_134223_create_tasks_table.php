@@ -19,7 +19,11 @@ class CreateTasksTable extends Migration
             $table->integer('workorder_id');
             $table->string('type_id');
             $table->string('description');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->timestamps();
+            $table->integer('created_by');
+            $table->integer('updated_by');
         });
     }
 
