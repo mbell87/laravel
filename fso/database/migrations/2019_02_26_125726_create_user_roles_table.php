@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWOTypesTable extends Migration
+class CreateUserRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateWOTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wo_types', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
-            $table->text('job_group');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateWOTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wo_types');
+        Schema::dropIfExists('user_roles');
     }
 }

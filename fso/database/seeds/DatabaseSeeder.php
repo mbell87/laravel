@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder
             MDFSeeder::class,
             StatusSeeder::class,
             TaskTypeSeeder::class,
+            WorkorderTypeSeeder::class,
+            UserRoleSeeder::class,
             UserSeeder::class,
-            WOTypeSeeder::class,
+            CallTypeSeeder::class,
         ]);
         }
 }

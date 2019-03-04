@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMdfsTable extends Migration
+class CreateTaskTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMdfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mdfs', function (Blueprint $table) {
+        Schema::create('task_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMdfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mdfs');
+        Schema::dropIfExists('task_types');
     }
 }

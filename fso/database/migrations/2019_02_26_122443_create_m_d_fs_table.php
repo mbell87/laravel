@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkorderInvoicesTable extends Migration
+class CreateMDFsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateWorkorderInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('workorder_invoice', function (Blueprint $table) {
+        Schema::create('mdfs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('workorder_id');
-            $table->integer('invoice_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateWorkorderInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workorder_invoice');
+        Schema::dropIfExists('mdfs');
     }
 }

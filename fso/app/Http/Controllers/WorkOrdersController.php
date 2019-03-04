@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Workorder;
+use App\MDF;
+use App\Status;
+use App\User;
 use Illuminate\Http\Request;
+use App\WorkorderType;
+use App\CallType;
 
 class WorkOrdersController extends Controller
 {
@@ -30,7 +35,17 @@ class WorkOrdersController extends Controller
      */
     public function create()
     {
-        return view("workorders.create");
+        $mdfs = MDF::all();
+        $workers = User::all();
+        $statuses = Status::all();
+        $callTypes = CallType::all();
+        $woTypes = WorkorderType::all();
+        return view("workorders.create")
+        ->with('mdfs', $mdfs)
+        ->with('workers', $workers)
+        ->with('statuses', $statuses)
+        ->with('woTypes', $woTypes)
+        ->with('callTypes', $callTypes);
     }
 
     /**

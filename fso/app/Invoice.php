@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invoic extends Model
+class Invoice extends Model
 {
     public function workorders()
     {

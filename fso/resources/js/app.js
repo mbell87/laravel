@@ -1,11 +1,21 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import $ from 'jquery';
+import 'jquery-ui/ui/widgets/datepicker.js';
+import 'jquery-datetimepicker/build/jquery.datetimepicker.full.min.js';
+$(function () {
+    jQuery('.datetimepicker').datetimepicker({
+        step: 15
+    });
+});
+
+
 require('./bootstrap');
+
 
 window.Vue = require('vue');
 

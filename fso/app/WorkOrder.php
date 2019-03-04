@@ -10,7 +10,7 @@ class Workorder extends Model
 
     public function invoices()
     {
-        return $this->belongsToMany(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 
 
@@ -39,6 +39,15 @@ class Workorder extends Model
         return $this->belongsTo(Status::class, "status_id");
     }
 
+    public function callType()
+    {
+        return $this->belongsTo(CallType::class, "call_type_id");
+    }
+
+    public function woType()
+    {
+        return $this->belongsTo(WorkorderType::class, "wo_type_id");
+    }
 
 
 
