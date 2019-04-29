@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <article>
                         <h4> {{ $workorder->name }} </h4>
-                        <div class="body"> {{ $workorder->type}}
+                        <div class="body"> {{ $workorder->woType->name}}
                     </article>
                 </div>
                 @foreach ($workorder->tasks as $task)
@@ -19,19 +19,7 @@
 
                 @if (auth()->check())
                 <div class="card-body">
-                    <h4> Add task: </h4>
-                    <form method="POST" action="{{ $workorder->path() . "/tasks"}}">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label>Type: </label>
-                            <input class="form-control" type="text" name="type" />
-                        </div>
-                        <div class="form-group">
-                            <label>Description: </label>
-                            <input class="form-control" type="text" name="description" />
-                        </div>
-                        <button type="submit" class="btn btn-default"> ADD </button>
-                    </form>
+                    <example-component :users="{{ $workers }}" :tasktypes="{{ $tasktypes }}"></example-component>
                 </div>
                 @endif
 

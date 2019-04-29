@@ -82,4 +82,9 @@ class TaskTypeController extends Controller
     {
         //
     }
+
+    public function getJson()
+    {
+        return TaskType::get(["id", "name"]);
+    }
 }

@@ -3,7 +3,19 @@
                             <form @submit="formSubmit">
                                 <div class="form-group">
                                     <label>Type:</label>
-                                    <v-select v-model="type_id" :options="tasktypes"></v-select>
+                                    <select class="selectable" v-model="type_id">
+                                        <option v-for="type in taskTypes" :value="type.id">
+                                            {{type.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <select class="selectable" v-model="user_id">
+                                        <option v-for="user in users" :value="user.value">
+                                            {{user.label}}
+                                        </option>
+                                    </select>
                                 </div>
                             <button class="btn btn-success">Submit</button>
                             </form>
@@ -17,14 +29,13 @@
 <script>
     export default {
         mounted() {
+            axios.get('/tasktypes/getjson').then(response => this.taskTypes = response.data);
 
         },
-        props:
-        [
-            'users','tasktypes'
-        ],
         data() {
             return {
+                users: [],
+                taskTypes: [],
                 user_id : '',
                 type_id : '',
                 output: '',
@@ -35,8 +46,7 @@
             formSubmit(e) {
                 e.preventDefault();
                 let currentObj = this;
-                let url = '/workorders/1/tasks'
-                axios.post(url, {
+                axios.post('/formSubmit', {
                     user_id: this.user_id,
                     type_id: this.type_id
                 })

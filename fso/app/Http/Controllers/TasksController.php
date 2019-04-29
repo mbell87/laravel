@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task;
 use App\Workorder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TasksController extends Controller
 {
@@ -43,17 +44,23 @@ class TasksController extends Controller
      */
     public function store(Workorder $workorder)
     {
+        return request();
         $workorder->addTask(
 
             [
-                'type' => request('type'),
-                'description' => request('description'),
-                'user_id' => auth()->id(),
-
+                'type_id' => request('type_id'),
+                'description' => "",
+                'user_id' => request('user_id'),
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id(),
+                'start_time' => Carbon::now(),
+                'end_time' => Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         );
 
-        return back();
+        return "OK";
     }
 
     /**

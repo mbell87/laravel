@@ -7,8 +7,11 @@ use App\MDF;
 use App\Status;
 use App\User;
 use Illuminate\Http\Request;
-use App\WorkorderType;
 use App\CallType;
+use App\Http\Requests\WorkorderStoreRequest;
+use Illuminate\Support\Facades\Auth;
+use App\WorkorderType;
+use App\TaskType;
 
 class WorkOrdersController extends Controller
 {
@@ -41,11 +44,11 @@ class WorkOrdersController extends Controller
         $callTypes = CallType::all();
         $woTypes = WorkorderType::all();
         return view("workorders.create")
-        ->with('mdfs', $mdfs)
-        ->with('workers', $workers)
-        ->with('statuses', $statuses)
-        ->with('woTypes', $woTypes)
-        ->with('callTypes', $callTypes);
+            ->with('mdfs', $mdfs)
+            ->with('workers', $workers)
+            ->with('statuses', $statuses)
+            ->with('woTypes', $woTypes)
+            ->with('callTypes', $callTypes);
     }
 
     /**
@@ -54,16 +57,10 @@ class WorkOrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WorkorderStoreRequest $request)
     {
-        $wo = Workorder::create(
-            [
-                "name" => request('name'),
-                "type" => request('type'),
-                "user_id" => auth()->id(),
-            ]
-        );
-
+        $createdBy = ["created_by" => Auth::user()->id, "updated_by" => Auth::user()->id];
+        $wo = Workorder::create(\array_merge($request->all(), $createdBy));
         return redirect($wo->path());
     }
 
@@ -75,7 +72,13 @@ class WorkOrdersController extends Controller
      */
     public function show(Workorder $workorder)
     {
-        return view('workorders.show', compact('workorder'));
+        $taskTypes = TaskType::get(["id", "name"]);
+        $workers = User::get(["id", "name"]);
+
+        return view('workorders.show')
+            ->with('workorder', $workorder)
+            ->with('tasktypes', $taskTypes)
+            ->with('workers', $workers);
     }
 
     /**

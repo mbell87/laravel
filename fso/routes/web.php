@@ -26,5 +26,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/workorders', "WorkOrdersController@store");
     Route::get('/workorders/{workorder}', "WorkOrdersController@show");
     Route::post('/workorders/{workorder}/tasks', "TasksController@store");
+
+
+    Route::get('/users/getjson', "UsersController@getJson");
+    Route::get('/tasktypes/getjson', "TaskTypeController@getJson");
+
 });
 

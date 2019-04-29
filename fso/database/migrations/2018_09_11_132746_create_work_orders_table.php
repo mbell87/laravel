@@ -23,11 +23,11 @@ class CreateWorkOrdersTable extends Migration
             $table->text('client');
             $table->string('description');
             $table->integer('status_id');
-            $table->integer('on_time');
+            $table->integer('on_time')->default(0);
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->integer('call_type');
-            $table->integer('invoice_id');
+            $table->integer('call_type_id');
+            $table->integer('invoice_id')->nullable();
             $table->timestamps();
             $table->integer('created_by');
             $table->integer('updated_by');

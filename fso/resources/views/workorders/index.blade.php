@@ -12,9 +12,9 @@
                     </a>
 
                     @foreach ($workorders as $workorder)
-                    <article> 
-                        <h4> <a href =" {{ $workorder->path() }} "> {{ $workorder->name }}</a></h4> 
-                        <div class="body"> {{ $workorder->type}} </div>
+                    <article>
+                        <h4> <a href =" {{ $workorder->path() }} "> {{ $workorder->name }}</a></h4>
+                        <div class="body"> {{ $workorder->woType->name}} </div>
                     </article>
                     <hr>
                     @endforeach
